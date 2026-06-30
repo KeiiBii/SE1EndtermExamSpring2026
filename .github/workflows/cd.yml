@@ -1,0 +1,13 @@
+name: CD Pipeline
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Build Docker Image
+        run: docker build -t messaging-app:latest .
